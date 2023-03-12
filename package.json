@@ -1,0 +1,20 @@
+{
+  "name": "mercado-pago-node",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Vanerika/mercado-pago-node.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Vanerika/mercado-pago-node/issues"
+  },
+  "homepage": "https://github.com/Vanerika/mercado-pago-node#readme"
+}

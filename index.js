@@ -25,9 +25,9 @@ app.post('/checkout', (req, res) => {
             },
         ],
         back_urls: {
-            "success": "http://localhost:3000/feedback?order_id=" + req.body.id,
-            "failure": "http://localhost:3000/feedback",
-            "pending": "http://localhost:3000/feedback"
+            "success": "http://ec2-15-228-225-90.sa-east-1.compute.amazonaws.com:3000/feedback?order_id=" + req.body.id,
+            "failure": "http://ec2-15-228-225-90.sa-east-1.compute.amazonaws.com:3000/feedback",
+            "pending": "http://ec2-15-228-225-90.sa-east-1.compute.amazonaws.com:3000/feedback"
         },
         auto_return: "approved",
     };
@@ -42,6 +42,10 @@ app.post('/checkout', (req, res) => {
         });
 });
 
+app.get('/ping', (req, res) => {
+    res.send('pongnode');
+  });
+
 app.get('/feedback', function (req, res) {
     const status = req.query.status;
     let mensaje;
@@ -51,7 +55,7 @@ app.get('/feedback', function (req, res) {
             mensaje = "Pago aprobado";
             //Agrega una llamada a la API para enviar una petición PUT al servidor deseado
             const axios = require('axios');
-            axios.put('http://localhost:5000/pagos/status/' + req.query.order_id, {
+            axios.put('http://ec2-15-228-225-90.sa-east-1.compute.amazonaws.com:5000/pagos/status/' + req.query.order_id, {
                 data: {
                     payment_id: req.query.payment_id,
                     status: status
@@ -75,7 +79,7 @@ app.get('/feedback', function (req, res) {
     }
 
     // Redirige al usuario a la página original
-    res.redirect("http://pas-frontend.test/admin/pagos.html");
+    res.redirect("http://ec2-15-228-225-90.sa-east-1.compute.amazonaws.com/admin/pagos.html");
 
     // Muestra una ventana emergente con el estado
     const script = `
